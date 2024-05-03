@@ -1,0 +1,20 @@
+import sys 
+message = "If you want to go on vacation you have to find a job and save up your money"
+
+def encode_message(message): 
+    message = message.upper()
+    filtered_message = ''.join([ch for ch in message if 'A' <= ch <= 'Z'])
+
+    encoded_message = ''
+    for char in filtered_message:
+        
+        shifted = ord(char) + 2
+        if shifted > ord('Z'):
+            shifted -= 26
+        encoded_message += chr(shifted)
+
+    blocks = [encoded_message[i:i+5] for i in range(0, len(encoded_message), 5)]
+
+    for i in range(0, len(blocks), 10):
+        print(' '.join(blocks[i:i+10]))
+encode_message(line)
